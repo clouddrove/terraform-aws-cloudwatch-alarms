@@ -1,0 +1,74 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : terraform-aws-cloudwatch-alarms
+
+# License of this project
+license: "MIT"
+
+# Canonical GitHub repo
+github_repo: clouddrove/terraform-aws-cloudwatch-alarms
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v0.12-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-MIT-blue.svg"
+    url: "LICENSE.md"
+
+#  Related Projects of this project
+related:
+  - name: "terraform-aws-ec2"
+    description: "Terraform module to create an EC2 with Elastic IP Addresses and Elastic Block Store."
+    url: "https://github.com/clouddrove/terraform-aws-ec2"
+
+#  description of this project
+description: |-
+  Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+
+# extra content
+include:
+  - "terraform.md"
+
+# How to use this project
+usage : |-
+  ### Simple Example
+  Here is an example of how you can use this module in your inventory structure:
+  ```hcl
+      module "alarm" {
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git"
+        name                      = "alarm"
+        application               = "clouddrove"
+        environment               = "test"
+        label_order               = ["environment", "name", "application"]
+        alarm_name                = "cpu-alarm"
+        comparison_operator       = "LessThanThreshold"
+        evaluation_periods        = 2
+        metric_name               = "CPUUtilization"
+        namespace                 = "AWS/EC2"
+        period                    = "60"
+        statistic                 = "Average"
+        threshold                 = "40"
+        alarm_description         = "This metric monitors ec2 cpu utilization"
+        alarm_actions             = ["arn:aws:sns:eu-west-1:xxxxxxxxxxx:test"]
+        actions_enabled           = true
+        insufficient_data_actions = []
+        ok_actions                = []
+        instance_id               = "XXXXXXXXXXXXXXXXX"
+
+    }
+  ```
+# Contributors to this project
+contributors:
+  - name: "Kamlesh Bhargav"
+    github: "kamleshbhargav"
+  - name: "Nikita Dugar"
+    github: "nikitadugar"
+  - name: "Sohan Yadav"
+    github: "sohanyadav"
