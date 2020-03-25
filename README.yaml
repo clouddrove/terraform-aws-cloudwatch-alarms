@@ -42,7 +42,7 @@ usage : |-
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git"
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.1"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
@@ -66,8 +66,6 @@ usage : |-
   ```
 # Contributors to this project
 contributors:
-  - name: "Kamlesh Bhargav"
-    github: "kamleshbhargav"
   - name: "Nikita Dugar"
     github: "nikitadugar"
   - name: "Sohan Yadav"
