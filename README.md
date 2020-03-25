@@ -38,7 +38,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards stratergies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -61,7 +61,9 @@ This module has a few dependencies:
 
 
 
+
 ## Examples
+
 
 **IMPORTANT:** Since the `master` branch used in `source` varies based on new modifications, we suggest that you use the release versions [here](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/releases).
 
@@ -70,7 +72,7 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
     module "alarm" {
-      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git"
+      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.1"
       name                      = "alarm"
       application               = "clouddrove"
       environment               = "test"
@@ -95,29 +97,33 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 
+
+
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| actions_enabled | Indicates whether or not actions should be executed during any changes to the alarm's state. | bool | `true` | no |
-| alarm_actions | The list of actions to execute when this alarm transitions into an ALARM state from any other state. | list | `<list>` | no |
-| alarm_description | The description for the alarm. | string | `` | no |
-| alarm_name | The descriptive name for the alarm. | string | - | yes |
-| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
-| comparison_operator | The arithmetic operation to use when comparing the specified Statistic and Threshold. | string | - | yes |
-| enabled | Enable alarm. | bool | `true` | no |
-| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
-| evaluation_periods | The number of periods over which data is compared to the specified threshold. | number | - | yes |
-| instance_id | The instance ID. | string | `` | no |
-| insufficient_data_actions | The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state. | list | `<list>` | no |
-| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| metric_name | The name for the alarm's associated metric. | string | `CPUUtilization` | no |
-| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
-| namespace | The namespace for the alarm's associated metric. | string | `AWS/EC2` | no |
-| ok_actions | The list of actions to execute when this alarm transitions into an OK state from any other state. | list | `<list>` | no |
-| period | The period in seconds over which the specified statistic is applied. | string | `120` | no |
-| statistic | The statistic to apply to the alarm's associated metric. | string | `Average` | no |
-| threshold | The value against which the specified statistic is compared. | string | `40` | no |
+| actions\_enabled | Indicates whether or not actions should be executed during any changes to the alarm's state. | bool | `"true"` | no |
+| alarm\_actions | The list of actions to execute when this alarm transitions into an ALARM state from any other state. | list | `<list>` | no |
+| alarm\_description | The description for the alarm. | string | `""` | no |
+| alarm\_name | The descriptive name for the alarm. | string | n/a | yes |
+| application | Application \(e.g. `cd` or `clouddrove`\). | string | `""` | no |
+| comparison\_operator | The arithmetic operation to use when comparing the specified Statistic and Threshold. | string | n/a | yes |
+| enabled | Enable alarm. | bool | `"true"` | no |
+| environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
+| evaluation\_periods | The number of periods over which data is compared to the specified threshold. | number | n/a | yes |
+| instance\_id | The instance ID. | string | `""` | no |
+| insufficient\_data\_actions | The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. | list | `<list>` | no |
+| label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | string | `"anmol@clouddrove.com"` | no |
+| metric\_name | The name for the alarm's associated metric. | string | `"CPUUtilization"` | no |
+| name | Name  \(e.g. `app` or `cluster`\). | string | `""` | no |
+| namespace | The namespace for the alarm's associated metric. | string | `"AWS/EC2"` | no |
+| ok\_actions | The list of actions to execute when this alarm transitions into an OK state from any other state. | list | `<list>` | no |
+| period | The period in seconds over which the specified statistic is applied. | number | `"120"` | no |
+| statistic | The statistic to apply to the alarm's associated metric. | string | `"Average"` | no |
+| threshold | The value against which the specified statistic is compared. | number | `"40"` | no |
 
 ## Outputs
 
@@ -129,8 +135,8 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 
-## Testing
 
+## Testing
 In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system.
 
 You need to run the following command in the testing folder:

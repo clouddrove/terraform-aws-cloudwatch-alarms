@@ -91,7 +91,7 @@ module "ec2" {
 }
 
 module "alarm" {
-  source = "git::https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git"
+  source = "../"
 
   name        = "alarm"
   application = "clouddrove"

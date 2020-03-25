@@ -24,6 +24,12 @@ variable "label_order" {
   description = "Label order, e.g. `name`,`application`."
 }
 
+variable "managedby" {
+  type        = string
+  default     = "anmol@clouddrove.com"
+  description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
+}
+
 #Module      : CLOUDWATCH METRIC ALARM
 #Description : Provides a CloudWatch Metric Alarm resource.
 variable "enabled" {
