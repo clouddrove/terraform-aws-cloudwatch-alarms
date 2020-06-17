@@ -37,8 +37,6 @@ resource "aws_cloudwatch_metric_alarm" "default" {
   tags                      = module.labels.tags
 
   dimensions = {
-    InstanceId = var.instance_id,
-    instance   = "Ec2:",
-    objectname = "LogicalDisk"
+    InstanceId = var.instance_id
   }
 }
