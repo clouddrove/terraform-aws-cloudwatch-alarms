@@ -5,7 +5,7 @@
 #
 
 # Name of this project
-name : terraform-aws-cloudwatch-alarms
+name : Terraform AWS Cloudwatch Alarms
 
 # License of this project
 license: "MIT"
@@ -22,12 +22,6 @@ badges:
     image: "https://img.shields.io/badge/License-MIT-blue.svg"
     url: "LICENSE.md"
 
-#  Related Projects of this project
-related:
-  - name: "terraform-aws-ec2"
-    description: "Terraform module to create an EC2 with Elastic IP Addresses and Elastic Block Store."
-    url: "https://github.com/clouddrove/terraform-aws-ec2"
-
 #  description of this project
 description: |-
   Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
@@ -42,7 +36,7 @@ usage : |-
   Here is an example of how you can use this module in your inventory structure:
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.1"
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.2"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
@@ -60,13 +54,8 @@ usage : |-
         actions_enabled           = true
         insufficient_data_actions = []
         ok_actions                = []
-        instance_id               = "XXXXXXXXXXXXXXXXX"
-
+        dimensions                = {
+                      instance_id = "i-xxxxxxxxxxxxx"
+        }
     }
   ```
-# Contributors to this project
-contributors:
-  - name: "Nikita Dugar"
-    github: "nikitadugar"
-  - name: "Sohan Yadav"
-    github: "sohanyadav"

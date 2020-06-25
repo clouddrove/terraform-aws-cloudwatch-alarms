@@ -118,3 +118,8 @@ variable "instance_id" {
   default     = ""
   description = "The instance ID."
 }
+
+variable "dimensions" {
+  default     = {}
+  description = "Dimensions for metrics."
+}

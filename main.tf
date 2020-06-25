@@ -36,7 +36,5 @@ resource "aws_cloudwatch_metric_alarm" "default" {
   ok_actions                = var.ok_actions
   tags                      = module.labels.tags
 
-  dimensions = {
-    InstanceId = var.instance_id
-  }
+  dimensions = var.dimensions
 }

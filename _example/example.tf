@@ -2,8 +2,6 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-
-
 module "vpc" {
   source = "git::https://github.com/clouddrove/terraform-aws-vpc.git"
 
@@ -105,5 +103,7 @@ module "alarm" {
   actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
-  instance_id               = module.ec2.instance_id[0]
+  dimensions                = {
+                      instance_id = module.ec2.instance_id[0]
+  }
 }
