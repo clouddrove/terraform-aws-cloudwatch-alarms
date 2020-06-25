@@ -98,12 +98,12 @@ module "alarm" {
   statistic           = "Average"
   threshold           = 40
   alarm_description   = "This metric monitors ec2 cpu utilization"
-  alarm_actions       = ["arn:aws:sns:eu-west-1:866067750630:test"]
+  alarm_actions       = ["arn:aws:sns:eu-west-1:xxxxxxxxxxxx:test"]
 
   actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
-  dimensions                = {
-                      instance_id = module.ec2.instance_id[0]
+  dimensions = {
+    instance_id = module.ec2.instance_id[0]
   }
 }
