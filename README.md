@@ -68,11 +68,11 @@ This module has a few dependencies:
 **IMPORTANT:** Since the `master` branch used in `source` varies based on new modifications, we suggest that you use the release versions [here](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/releases).
 
 
-### Simple Example
-Here is an example of how you can use this module in your inventory structure:
+Here are some examples of how you can use this module in your inventory structure:
+### Basic Example
 ```hcl
     module "alarm" {
-      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.3"
+      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
       name                      = "alarm"
       application               = "clouddrove"
       environment               = "test"
@@ -96,6 +96,83 @@ Here is an example of how you can use this module in your inventory structure:
   }
 ```
 
+### Anomaly Example
+```hcl
+    module "alarm" {
+      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+      name                      = "alarm"
+      application               = "clouddrove"
+      environment               = "test"
+      label_order               = ["environment", "name", "application"]
+      alarm_name                = "cpu-alarm"
+      comparison_operator       = "GreaterThanUpperThreshold"
+      evaluation_periods        = 2
+      threshold_metric_id       = "e1"
+      query_expressions         = [{
+        id          = "e1"
+        expression  = "ANOMALY_DETECTION_BAND(m1)"
+        label       = "CPUUtilization (Expected)"
+        return_data = "true"
+      }]
+      query_metrics             = [{
+        id          = "m1"
+        return_data = "true"
+        metric_name = "CPUUtilization"
+        namespace   = "AWS/EC2"
+        period      = "120"
+        stat        = "Average"
+        unit        = "Count"
+        dimensions  = {
+          InstanceId = module.ec2.instance_id[0]
+        }
+      }]
+      alarm_description         = "This metric monitors ec2 cpu utilization"
+      alarm_actions             = []
+      actions_enabled           = true
+      insufficient_data_actions = []
+      ok_actions                = []
+  }
+```
+
+### Epression Example
+```hcl
+    module "alarm" {
+      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+      name                      = "alarm"
+      application               = "clouddrove"
+      environment               = "test"
+      label_order               = ["environment", "name", "application"]
+      expression_enabled        = true
+      alarm_name                = "cpu-alarm"
+      comparison_operator       = "GreaterThanUpperThreshold"
+      evaluation_periods        = 2
+      threshold                 = 40
+      query_expressions         = [{
+        id          = "e1"
+        expression  = "ANOMALY_DETECTION_BAND(m1)"
+        label       = "CPUUtilization (Expected)"
+        return_data = "true"
+      }]
+      query_metrics             = [{
+        id          = "m1"
+        return_data = "true"
+        metric_name = "CPUUtilization"
+        namespace   = "AWS/EC2"
+        period      = "120"
+        stat        = "Average"
+        unit        = "Count"
+        dimensions  = {
+          InstanceId = module.ec2.instance_id[0]
+        }
+      }]
+      alarm_description         = "This metric monitors ec2 cpu utilization"
+      alarm_actions             = []
+      actions_enabled           = true
+      insufficient_data_actions = []
+      ok_actions                = []
+  }
+```
+
 
 
 
@@ -115,6 +192,7 @@ Here is an example of how you can use this module in your inventory structure:
 | enabled | Enable alarm. | bool | `"true"` | no |
 | environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
 | evaluation\_periods | The number of periods over which data is compared to the specified threshold. | number | n/a | yes |
+| expression\_enabled | Enable alarm with expression. | bool | `"false"` | no |
 | instance\_id | The instance ID. | string | `""` | no |
 | insufficient\_data\_actions | The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. | list | `<list>` | no |
 | label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
@@ -124,8 +202,11 @@ Here is an example of how you can use this module in your inventory structure:
 | namespace | The namespace for the alarm's associated metric. | string | `"AWS/EC2"` | no |
 | ok\_actions | The list of actions to execute when this alarm transitions into an OK state from any other state. | list | `<list>` | no |
 | period | The period in seconds over which the specified statistic is applied. | number | `"120"` | no |
+| query\_expressions | values for metric query expression. | map | `<map>` | no |
+| query\_metrics | values for metric query metrics. | map | `<map>` | no |
 | statistic | The statistic to apply to the alarm's associated metric. | string | `"Average"` | no |
 | threshold | The value against which the specified statistic is compared. | number | `"40"` | no |
+| threshold\_metric\_id | If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function. | string | `""` | no |
 
 ## Outputs
 

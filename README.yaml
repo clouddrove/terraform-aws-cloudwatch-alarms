@@ -32,11 +32,11 @@ include:
 
 # How to use this project
 usage : |-
-  ### Simple Example
-  Here is an example of how you can use this module in your inventory structure:
+  Here are some examples of how you can use this module in your inventory structure:
+  ### Basic Example
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.3"
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
@@ -57,5 +57,82 @@ usage : |-
         dimensions                = {
                       instance_id = "i-xxxxxxxxxxxxx"
         }
+    }
+  ```
+
+  ### Anomaly Example
+  ```hcl
+      module "alarm" {
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+        name                      = "alarm"
+        application               = "clouddrove"
+        environment               = "test"
+        label_order               = ["environment", "name", "application"]
+        alarm_name                = "cpu-alarm"
+        comparison_operator       = "GreaterThanUpperThreshold"
+        evaluation_periods        = 2
+        threshold_metric_id       = "e1"
+        query_expressions         = [{
+          id          = "e1"
+          expression  = "ANOMALY_DETECTION_BAND(m1)"
+          label       = "CPUUtilization (Expected)"
+          return_data = "true"
+        }]
+        query_metrics             = [{
+          id          = "m1"
+          return_data = "true"
+          metric_name = "CPUUtilization"
+          namespace   = "AWS/EC2"
+          period      = "120"
+          stat        = "Average"
+          unit        = "Count"
+          dimensions  = {
+            InstanceId = module.ec2.instance_id[0]
+          }
+        }]
+        alarm_description         = "This metric monitors ec2 cpu utilization"
+        alarm_actions             = []
+        actions_enabled           = true
+        insufficient_data_actions = []
+        ok_actions                = []
+    }
+  ```
+
+  ### Epression Example
+  ```hcl
+      module "alarm" {
+        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+        name                      = "alarm"
+        application               = "clouddrove"
+        environment               = "test"
+        label_order               = ["environment", "name", "application"]
+        expression_enabled        = true
+        alarm_name                = "cpu-alarm"
+        comparison_operator       = "GreaterThanUpperThreshold"
+        evaluation_periods        = 2
+        threshold                 = 40
+        query_expressions         = [{
+          id          = "e1"
+          expression  = "ANOMALY_DETECTION_BAND(m1)"
+          label       = "CPUUtilization (Expected)"
+          return_data = "true"
+        }]
+        query_metrics             = [{
+          id          = "m1"
+          return_data = "true"
+          metric_name = "CPUUtilization"
+          namespace   = "AWS/EC2"
+          period      = "120"
+          stat        = "Average"
+          unit        = "Count"
+          dimensions  = {
+            InstanceId = module.ec2.instance_id[0]
+          }
+        }]
+        alarm_description         = "This metric monitors ec2 cpu utilization"
+        alarm_actions             = []
+        actions_enabled           = true
+        insufficient_data_actions = []
+        ok_actions                = []
     }
   ```

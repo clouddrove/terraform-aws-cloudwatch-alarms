@@ -24,6 +24,7 @@ module "public_subnets" {
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
   cidr_block         = module.vpc.vpc_cidr_block
+  ipv6_cidr_block    = module.vpc.ipv6_cidr_block
   type               = "public"
   igw_id             = module.vpc.igw_id
 }
@@ -82,7 +83,7 @@ module "ec2" {
 }
 
 module "alarm" {
-  source = "../"
+  source = "../../"
 
   name        = "alarm"
   application = "clouddrove"
@@ -90,7 +91,7 @@ module "alarm" {
   label_order = ["environment", "name", "application"]
 
   alarm_name          = "cpu-alarm"
-  comparison_operator = "LessThanThreshold"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = 2
   metric_name         = "CPUUtilization"
   namespace           = "AWS/EC2"
@@ -98,7 +99,7 @@ module "alarm" {
   statistic           = "Average"
   threshold           = 40
   alarm_description   = "This metric monitors ec2 cpu utilization"
-  alarm_actions       = ["arn:aws:sns:eu-west-1:xxxxxxxxxxxx:test"]
+  alarm_actions       = []
 
   actions_enabled           = true
   insufficient_data_actions = []

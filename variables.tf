@@ -38,6 +38,12 @@ variable "enabled" {
   description = "Enable alarm."
 }
 
+variable "expression_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable alarm with expression."
+}
+
 variable "alarm_name" {
   type        = string
   description = "The descriptive name for the alarm."
@@ -89,6 +95,12 @@ variable "threshold" {
   description = "The value against which the specified statistic is compared."
 }
 
+variable "threshold_metric_id" {
+  type        = string
+  default     = ""
+  description = "If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function."
+}
+
 variable "alarm_actions" {
   type        = list
   default     = []
@@ -122,4 +134,30 @@ variable "instance_id" {
 variable "dimensions" {
   default     = {}
   description = "Dimensions for metrics."
+}
+
+variable "query_expressions" {
+  default = [{
+    id          = "e1"
+    expression  = "ANOMALY_DETECTION_BAND(m1)"
+    label       = "CPUUtilization (Expected)"
+    return_data = "true"
+  }]
+  description = "values for metric query expression."
+}
+
+variable "query_metrics" {
+  default = [{
+    id          = "m1"
+    return_data = "true"
+    metric_name = "CPUUtilization"
+    namespace   = "AWS/EC2"
+    period      = "120"
+    stat        = "Average"
+    unit        = "Count"
+    dimensions = {
+      InstanceId = "i-abc123"
+    }
+  }]
+  description = "values for metric query metrics."
 }
