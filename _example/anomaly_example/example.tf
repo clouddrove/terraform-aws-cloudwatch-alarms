@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 module "vpc" {
-  source = "git::https://github.com/clouddrove/terraform-aws-vpc.git"
-
+  source      = "clouddrove/vpc/aws"
+  version     = "0.13.0"
   name        = "vpc"
   application = "clouddrove"
   environment = "test"
@@ -14,7 +14,8 @@ module "vpc" {
 }
 
 module "public_subnets" {
-  source = "git::https://github.com/clouddrove/terraform-aws-subnet.git"
+  source  = "clouddrove/subnet/aws"
+  version = "0.13.0"
 
   name        = "public-subnet"
   application = "clouddrove"
@@ -30,7 +31,8 @@ module "public_subnets" {
 }
 
 module "http-https" {
-  source = "git::https://github.com/clouddrove/terraform-aws-security-group.git"
+  source  = "clouddrove/security-group/aws"
+  version = "0.13.0"
 
   name        = "http-https"
   application = "clouddrove"
@@ -43,7 +45,8 @@ module "http-https" {
 }
 
 module "ssh" {
-  source = "git::https://github.com/clouddrove/terraform-aws-security-group.git"
+  source  = "clouddrove/security-group/aws"
+  version = "0.13.0"
 
   name        = "ssh"
   application = "clouddrove"
@@ -56,7 +59,8 @@ module "ssh" {
 }
 
 module "ec2" {
-  source = "git::https://github.com/clouddrove/terraform-aws-ec2.git"
+  source  = "clouddrove/ec2/aws"
+  version = "0.13.0"
 
   name        = "ec2-instance"
   application = "clouddrove"

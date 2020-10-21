@@ -37,7 +37,8 @@ usage: |-
   ### Basic Example
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.13.0"
+        source                    = "clouddrove/cloudwatch-alarms/aws"
+        version                   = "0.13.0"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
@@ -64,7 +65,8 @@ usage: |-
   ### Anomaly Example
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.13.0"
+        source                    = "clouddrove/cloudwatch-alarms/aws"
+        version                   = "0.13.0"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
@@ -102,7 +104,8 @@ usage: |-
   ### Epression Example
   ```hcl
       module "alarm" {
-        source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.13.0"
+        source                    = "clouddrove/cloudwatch-alarms/aws"
+        version                   = "0.13.0"
         name                      = "alarm"
         application               = "clouddrove"
         environment               = "test"
