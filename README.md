@@ -7,14 +7,14 @@
     Terraform AWS Cloudwatch Alarms
 </h1>
 
-<p align="center" style="font-size: 1.2rem;">
+<p align="center" style="font-size: 1.2rem;"> 
     Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
      </p>
 
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.12-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/Terraform-v0.13-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -38,7 +38,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure. 
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -49,9 +49,9 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 ## Prerequisites
 
-This module has a few dependencies:
+This module has a few dependencies: 
 
-- [Terraform 0.12](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Terraform 0.13](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Go](https://golang.org/doc/install)
 - [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
 - [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
@@ -72,7 +72,8 @@ Here are some examples of how you can use this module in your inventory structur
 ### Basic Example
 ```hcl
     module "alarm" {
-      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+      source                    = "clouddrove/cloudwatch-alarms/aws"
+      version                   = "0.13.0"
       name                      = "alarm"
       application               = "clouddrove"
       environment               = "test"
@@ -99,7 +100,8 @@ Here are some examples of how you can use this module in your inventory structur
 ### Anomaly Example
 ```hcl
     module "alarm" {
-      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+      source                    = "clouddrove/cloudwatch-alarms/aws"
+      version                   = "0.13.0"
       name                      = "alarm"
       application               = "clouddrove"
       environment               = "test"
@@ -137,7 +139,8 @@ Here are some examples of how you can use this module in your inventory structur
 ### Epression Example
 ```hcl
     module "alarm" {
-      source                    = "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms.git?ref=tags/0.12.4"
+      source                    = "clouddrove/cloudwatch-alarms/aws"
+      version                   = "0.13.0"
       name                      = "alarm"
       application               = "clouddrove"
       environment               = "test"
@@ -181,32 +184,32 @@ Here are some examples of how you can use this module in your inventory structur
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| actions\_enabled | Indicates whether or not actions should be executed during any changes to the alarm's state. | bool | `"true"` | no |
-| alarm\_actions | The list of actions to execute when this alarm transitions into an ALARM state from any other state. | list | `<list>` | no |
-| alarm\_description | The description for the alarm. | string | `""` | no |
-| alarm\_name | The descriptive name for the alarm. | string | n/a | yes |
-| application | Application \(e.g. `cd` or `clouddrove`\). | string | `""` | no |
-| comparison\_operator | The arithmetic operation to use when comparing the specified Statistic and Threshold. | string | n/a | yes |
-| dimensions | Dimensions for metrics. | map | `<map>` | no |
-| enabled | Enable alarm. | bool | `"true"` | no |
-| environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
-| evaluation\_periods | The number of periods over which data is compared to the specified threshold. | number | n/a | yes |
-| expression\_enabled | Enable alarm with expression. | bool | `"false"` | no |
-| instance\_id | The instance ID. | string | `""` | no |
-| insufficient\_data\_actions | The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. | list | `<list>` | no |
-| label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | string | `"anmol@clouddrove.com"` | no |
-| metric\_name | The name for the alarm's associated metric. | string | `"CPUUtilization"` | no |
-| name | Name  \(e.g. `app` or `cluster`\). | string | `""` | no |
-| namespace | The namespace for the alarm's associated metric. | string | `"AWS/EC2"` | no |
-| ok\_actions | The list of actions to execute when this alarm transitions into an OK state from any other state. | list | `<list>` | no |
-| period | The period in seconds over which the specified statistic is applied. | number | `"120"` | no |
-| query\_expressions | values for metric query expression. | map | `<map>` | no |
-| query\_metrics | values for metric query metrics. | map | `<map>` | no |
-| statistic | The statistic to apply to the alarm's associated metric. | string | `"Average"` | no |
-| threshold | The value against which the specified statistic is compared. | number | `"40"` | no |
-| threshold\_metric\_id | If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function. | string | `""` | no |
+|------|-------------|------|---------|:--------:|
+| actions\_enabled | Indicates whether or not actions should be executed during any changes to the alarm's state. | `bool` | `true` | no |
+| alarm\_actions | The list of actions to execute when this alarm transitions into an ALARM state from any other state. | `list` | `[]` | no |
+| alarm\_description | The description for the alarm. | `string` | `""` | no |
+| alarm\_name | The descriptive name for the alarm. | `string` | n/a | yes |
+| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
+| comparison\_operator | The arithmetic operation to use when comparing the specified Statistic and Threshold. | `string` | n/a | yes |
+| dimensions | Dimensions for metrics. | `map` | `{}` | no |
+| enabled | Enable alarm. | `bool` | `true` | no |
+| environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| evaluation\_periods | The number of periods over which data is compared to the specified threshold. | `number` | n/a | yes |
+| expression\_enabled | Enable alarm with expression. | `bool` | `false` | no |
+| instance\_id | The instance ID. | `string` | `""` | no |
+| insufficient\_data\_actions | The list of actions to execute when this alarm transitions into an INSUFFICIENT\_DATA state from any other state. | `list` | `[]` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
+| metric\_name | The name for the alarm's associated metric. | `string` | `"CPUUtilization"` | no |
+| name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| namespace | The namespace for the alarm's associated metric. | `string` | `"AWS/EC2"` | no |
+| ok\_actions | The list of actions to execute when this alarm transitions into an OK state from any other state. | `list` | `[]` | no |
+| period | The period in seconds over which the specified statistic is applied. | `number` | `120` | no |
+| query\_expressions | values for metric query expression. | `list` | <pre>[<br>  {<br>    "expression": "ANOMALY_DETECTION_BAND(m1)",<br>    "id": "e1",<br>    "label": "CPUUtilization (Expected)",<br>    "return_data": "true"<br>  }<br>]</pre> | no |
+| query\_metrics | values for metric query metrics. | `list` | <pre>[<br>  {<br>    "dimensions": {<br>      "InstanceId": "i-abc123"<br>    },<br>    "id": "m1",<br>    "metric_name": "CPUUtilization",<br>    "namespace": "AWS/EC2",<br>    "period": "120",<br>    "return_data": "true",<br>    "stat": "Average",<br>    "unit": "Count"<br>  }<br>]</pre> | no |
+| statistic | The statistic to apply to the alarm's associated metric. | `string` | `"Average"` | no |
+| threshold | The value against which the specified statistic is compared. | `number` | `40` | no |
+| threshold\_metric\_id | If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function. | `string` | `""` | no |
 
 ## Outputs
 
@@ -220,7 +223,7 @@ Here are some examples of how you can use this module in your inventory structur
 
 
 ## Testing
-In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system.
+In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system. 
 
 You need to run the following command in the testing folder:
 ```hcl
@@ -229,7 +232,7 @@ You need to run the following command in the testing folder:
 
 
 
-## Feedback
+## Feedback 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms)!
