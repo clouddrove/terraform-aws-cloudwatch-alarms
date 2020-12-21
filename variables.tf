@@ -6,10 +6,16 @@ variable "name" {
   description = "Name  (e.g. `app` or `cluster`)."
 }
 
-variable "application" {
+variable "repository" {
   type        = string
   default     = ""
-  description = "Application (e.g. `cd` or `clouddrove`)."
+  description = "Terraform current module repo"
+
+  validation {
+    # regex(...) fails if it cannot find a match
+    condition     = can(regex("^https://", var.repository))
+    error_message = "The module-repo value must be a valid Git repo link."
+  }
 }
 
 variable "environment" {
@@ -26,8 +32,8 @@ variable "label_order" {
 
 variable "managedby" {
   type        = string
-  default     = "anmol@clouddrove.com"
-  description = "ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'."
+  default     = "hello@clouddrove.com"
+  description = "ManagedBy, eg 'CloudDrove'."
 }
 
 #Module      : CLOUDWATCH METRIC ALARM
@@ -58,6 +64,7 @@ variable "alarm_description" {
 variable "comparison_operator" {
   type        = string
   description = "The arithmetic operation to use when comparing the specified Statistic and Threshold."
+  sensitive   = true
 }
 
 variable "evaluation_periods" {
@@ -75,6 +82,7 @@ variable "namespace" {
   type        = string
   default     = "AWS/EC2"
   description = "The namespace for the alarm's associated metric."
+  sensitive   = true
 }
 
 variable "period" {
@@ -129,6 +137,7 @@ variable "instance_id" {
   type        = string
   default     = ""
   description = "The instance ID."
+  sensitive   = true
 }
 
 variable "dimensions" {

@@ -7,9 +7,9 @@ module "vpc" {
   version = "0.13.0"
 
   name        = "vpc"
-  application = "clouddrove"
+  repository  = "https://registry.terraform.io/modules/clouddrove/vpc/aws/0.14.0"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
 
   cidr_block = "172.16.0.0/16"
 }
@@ -19,9 +19,10 @@ module "public_subnets" {
   version = "0.13.0"
 
   name        = "public-subnet"
-  application = "clouddrove"
+  repository  = "https://registry.terraform.io/modules/clouddrove/subnet/aws/0.14.0"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
+
 
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
@@ -37,10 +38,10 @@ module "http-https" {
 
 
   name        = "http-https"
-  application = "clouddrove"
-  label_order = ["environment", "name", "application"]
+  repository  = "https://registry.terraform.io/modules/clouddrove/security-group/aws/0.14.0"
+  environment = "test"
+  label_order = ["name", "environment"]
 
-  environment   = "test"
   vpc_id        = module.vpc.vpc_id
   allowed_ip    = ["0.0.0.0/0"]
   allowed_ports = [80, 443]
@@ -52,10 +53,10 @@ module "ssh" {
 
 
   name        = "ssh"
-  application = "clouddrove"
-  label_order = ["environment", "name", "application"]
+  repository  = "https://registry.terraform.io/modules/clouddrove/security-group/aws/0.14.0"
+  environment = "test"
+  label_order = ["name", "environment"]
 
-  environment   = "test"
   vpc_id        = module.vpc.vpc_id
   allowed_ip    = [module.vpc.vpc_cidr_block]
   allowed_ports = [22]
@@ -66,9 +67,9 @@ module "ec2" {
   version = "0.13.0"
 
   name        = "ec2-instance"
-  application = "clouddrove"
+  repository  = "https://registry.terraform.io/modules/clouddrove/ec2/aws/0.14.0"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
 
   instance_count              = 1
   ami                         = "ami-08d658f84a6d84a80"
@@ -93,9 +94,10 @@ module "alarm" {
   source = "../../"
 
   name        = "alarm"
-  application = "clouddrove"
+  repository  = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["name", "environment"]
+
 
   expression_enabled  = true
   alarm_name          = "cpu-alarm"
