@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   source      = "clouddrove/vpc/aws"
-  version     = "0.13.0"
+  version     = "0.14.0"
   name        = "vpc"
   repository  = "https://registry.terraform.io/modules/clouddrove/vpc/aws/0.14.0"
   environment = "test"
@@ -15,7 +15,7 @@ module "vpc" {
 
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
   name        = "public-subnet"
   repository  = "https://registry.terraform.io/modules/clouddrove/subnet/aws/0.14.0"
@@ -33,7 +33,7 @@ module "public_subnets" {
 
 module "http-https" {
   source  = "clouddrove/security-group/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
   name        = "alarm"
   repository  = "https://registry.terraform.io/modules/clouddrove/security-group/aws/0.14.0"
@@ -47,9 +47,9 @@ module "http-https" {
 
 module "ssh" {
   source  = "clouddrove/security-group/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
-  name        = "alarm"
+  name        = "alarmsg"
   repository  = "https://registry.terraform.io/modules/clouddrove/security-group/aws/0.14.0"
   environment = "test"
   label_order = ["name", "environment"]
@@ -61,7 +61,7 @@ module "ssh" {
 
 module "ec2" {
   source  = "clouddrove/ec2/aws"
-  version = "0.13.0"
+  version = "0.14.0"
 
   name        = "alarm"
   repository  = "https://registry.terraform.io/modules/clouddrove/ec2/aws/0.14.0"

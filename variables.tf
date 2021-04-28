@@ -25,7 +25,7 @@ variable "environment" {
 }
 
 variable "label_order" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Label order, e.g. `name`,`application`."
 }
@@ -110,7 +110,7 @@ variable "threshold_metric_id" {
 }
 
 variable "alarm_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an ALARM state from any other state."
 }
@@ -122,13 +122,13 @@ variable "actions_enabled" {
 }
 
 variable "insufficient_data_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state."
 }
 
 variable "ok_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an OK state from any other state."
 }
