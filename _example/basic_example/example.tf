@@ -77,7 +77,7 @@ module "ec2" {
   ami                         = "ami-08d658f84a6d84a80"
   ebs_optimized               = "false"
   instance_type               = "t2.nano"
-  monitoring                  = false
+  monitoring                  = true
   associate_public_ip_address = true
   tenancy                     = "default"
   disk_size                   = 8
