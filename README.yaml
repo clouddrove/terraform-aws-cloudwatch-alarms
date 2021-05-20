@@ -38,11 +38,11 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.13.0"
+        version                   = "0.14.0"
         name                      = "alarm"
-        application               = "clouddrove"
+        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
-        label_order               = ["environment", "name", "application"]
+        label_order               = ["name", "environment"]
         alarm_name                = "cpu-alarm"
         comparison_operator       = "LessThanThreshold"
         evaluation_periods        = 2
@@ -66,11 +66,11 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.13.0"
+        version                   = "0.14.0"
         name                      = "alarm"
-        application               = "clouddrove"
+        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
-        label_order               = ["environment", "name", "application"]
+        label_order               = ["name", "environment"]
         alarm_name                = "cpu-alarm"
         comparison_operator       = "GreaterThanUpperThreshold"
         evaluation_periods        = 2
@@ -105,11 +105,11 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.13.0"
+        version                   = "0.14.0"
         name                      = "alarm"
-        application               = "clouddrove"
+        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
-        label_order               = ["environment", "name", "application"]
+        label_order               = ["name", "environment"]
         expression_enabled        = true
         alarm_name                = "cpu-alarm"
         comparison_operator       = "GreaterThanUpperThreshold"

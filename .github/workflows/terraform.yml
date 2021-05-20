@@ -20,60 +20,60 @@ jobs:
           aws-region: us-east-2
 
       - name: 'Terraform Format'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'fmt'
 
       - name: 'Terraform init anomaly_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'init'
           tf_actions_working_dir: ./_example/anomaly_example
 
       - name: 'Terraform validate anomaly_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'validate'
           tf_actions_working_dir: ./_example/anomaly_example
 
       - name: 'Terraform plan anomaly_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'plan'
           tf_actions_working_dir: ./_example/anomaly_example
 
       - name: 'Terraform init basic_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'init'
           tf_actions_working_dir: ./_example/basic_example
 
       - name: 'Terraform validate basic_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'validate'
           tf_actions_working_dir: ./_example/basic_example
 
       - name: 'Terraform plan basic_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'plan'
           tf_actions_working_dir: ./_example/basic_example
 
       - name: 'Terraform init expression_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'init'
           tf_actions_working_dir: ./_example/expression_example
 
       - name: 'Terraform validate expression_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'validate'
           tf_actions_working_dir: ./_example/expression_example
 
       - name: 'Terraform plan expression_example'
-        uses: 'clouddrove/github-actions@v4.0'
+        uses: 'clouddrove/github-actions@v6.0'
         with:
           actions_subcommand: 'plan'
           tf_actions_working_dir: ./_example/expression_example
