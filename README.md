@@ -7,7 +7,7 @@
     Terraform AWS Cloudwatch Alarms
 </h1>
 
-<p align="center" style="font-size: 1.2rem;">
+<p align="center" style="font-size: 1.2rem;"> 
     Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
      </p>
 
@@ -38,7 +38,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure. 
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -49,7 +49,7 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 ## Prerequisites
 
-This module has a few dependencies:
+This module has a few dependencies: 
 
 - [Terraform 0.13](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Go](https://golang.org/doc/install)
@@ -73,9 +73,8 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "0.14.0"
+      version                   = "0.15.0"
       name                      = "alarm"
-      repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
       environment               = "test"
       label_order               = ["name", "environment"]
       alarm_name                = "cpu-alarm"
@@ -101,9 +100,8 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "0.14.0"
+      version                   = "0.15.0"
       name                      = "alarm"
-      repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
       environment               = "test"
       label_order               = ["name", "environment"]
       alarm_name                = "cpu-alarm"
@@ -140,9 +138,8 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "0.14.0"
+      version                   = "0.15.0"
       name                      = "alarm"
-      repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
       environment               = "test"
       label_order               = ["name", "environment"]
       expression_enabled        = true
@@ -206,7 +203,7 @@ Here are some examples of how you can use this module in your inventory structur
 | period | The period in seconds over which the specified statistic is applied. | `number` | `120` | no |
 | query\_expressions | values for metric query expression. | `list` | <pre>[<br>  {<br>    "expression": "ANOMALY_DETECTION_BAND(m1)",<br>    "id": "e1",<br>    "label": "CPUUtilization (Expected)",<br>    "return_data": "true"<br>  }<br>]</pre> | no |
 | query\_metrics | values for metric query metrics. | `list` | <pre>[<br>  {<br>    "dimensions": {<br>      "InstanceId": "i-abc123"<br>    },<br>    "id": "m1",<br>    "metric_name": "CPUUtilization",<br>    "namespace": "AWS/EC2",<br>    "period": "120",<br>    "return_data": "true",<br>    "stat": "Average",<br>    "unit": "Count"<br>  }<br>]</pre> | no |
-| repository | Terraform current module repo | `string` | `""` | no |
+| repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-aws-cloudwatch-alarms"` | no |
 | statistic | The statistic to apply to the alarm's associated metric. | `string` | `"Average"` | no |
 | threshold | The value against which the specified statistic is compared. | `number` | `40` | no |
 | threshold\_metric\_id | If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function. | `string` | `""` | no |
@@ -223,7 +220,7 @@ Here are some examples of how you can use this module in your inventory structur
 
 
 ## Testing
-In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system.
+In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system. 
 
 You need to run the following command in the testing folder:
 ```hcl
@@ -232,7 +229,7 @@ You need to run the following command in the testing folder:
 
 
 
-## Feedback
+## Feedback 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms)!
