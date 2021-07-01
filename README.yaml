@@ -38,9 +38,8 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.14.0"
+        version                   = "0.15.0"
         name                      = "alarm"
-        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
         label_order               = ["name", "environment"]
         alarm_name                = "cpu-alarm"
@@ -66,9 +65,8 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.14.0"
+        version                   = "0.15.0"
         name                      = "alarm"
-        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
         label_order               = ["name", "environment"]
         alarm_name                = "cpu-alarm"
@@ -105,9 +103,8 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.14.0"
+        version                   = "0.15.0"
         name                      = "alarm"
-        repository                = "https://registry.terraform.io/modules/clouddrove/cloudwatch-alarms/aws/0.14.0"
         environment               = "test"
         label_order               = ["name", "environment"]
         expression_enabled        = true
