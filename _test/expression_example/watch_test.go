@@ -14,7 +14,7 @@ func TestCloudWatch(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// Source path of Terraform directory.
-		TerraformDir: "../../_example/expression_example"
+		TerraformDir: "../../_example/expression_example",
 	}
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
