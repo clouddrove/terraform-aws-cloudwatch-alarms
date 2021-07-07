@@ -1,5 +1,5 @@
 // Managed By : CloudDrove
-// Description : This Terratest is used to test the Terraform VPC module.
+// Description : This Terratest is used to test the Terraform cloudwatch-alarm module.
 // Copyright @ CloudDrove. All Right Reserved.
 package test
 
@@ -14,7 +14,7 @@ func TestCloudWatch(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// Source path of Terraform directory.
-		TerraformDir: "../../_example/basic_example",
+		TerraformDir: "../../_example/basic_example"
 	}
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
