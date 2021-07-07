@@ -24,10 +24,8 @@ func TestCloudWatch(t *testing.T) {
 	defer terraform.Destroy(t, terraformOptions)
 
 	// To get the value of an output variable, run 'terraform output'
-	Arn := terraform.Output(t, terraformOptions, "arn")
 	Tags := terraform.OutputMap(t, terraformOptions, "tags")
 
 	// Check that we get back the outputs that we expect
-	assert.Equal(t, "test-alarm-clouddrove", Tags["Name"])
-	assert.Contains(t, Arn, "arn:aws:cloudwatch")
+	assert.Equal(t, "alarm-test", Tags["Name"])
 }
