@@ -19,7 +19,7 @@ variable "environment" {
 }
 
 variable "label_order" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "Label order, e.g. `name`,`application`."
 }
@@ -65,6 +65,12 @@ variable "evaluation_periods" {
   description = "The number of periods over which data is compared to the specified threshold."
 }
 
+variable "datapoints_to_alarm" {
+  type        = number
+  default     = 2
+  description = "The number of datapoints that must be breaching to trigger the alarm."
+}
+
 variable "metric_name" {
   type        = string
   default     = "CPUUtilization"
@@ -102,7 +108,7 @@ variable "threshold_metric_id" {
 }
 
 variable "alarm_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an ALARM state from any other state."
 }
@@ -114,13 +120,13 @@ variable "actions_enabled" {
 }
 
 variable "insufficient_data_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state."
 }
 
 variable "ok_actions" {
-  type        = list
+  type        = list(any)
   default     = []
   description = "The list of actions to execute when this alarm transitions into an OK state from any other state."
 }
