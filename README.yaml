@@ -8,7 +8,7 @@
 name: Terraform AWS Cloudwatch Alarms
 
 # License of this project
-license: "MIT"
+license: "APACHE"
 
 # Canonical GitHub repo
 github_repo: clouddrove/terraform-aws-cloudwatch-alarms
@@ -16,11 +16,17 @@ github_repo: clouddrove/terraform-aws-cloudwatch-alarms
 # Badges to display
 badges:
   - name: "Terraform"
-    image: "https://img.shields.io/badge/Terraform-v0.13-green"
+    image: "https://img.shields.io/badge/Terraform-v1.1.7-green"
     url: "https://www.terraform.io"
   - name: "Licence"
-    image: "https://img.shields.io/badge/License-MIT-blue.svg"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
     url: "LICENSE.md"
+  - name: "tfsec"
+    image: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/tfsec.yml/badge.svg"
+    url: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/tfsec.yml"
+  - name: "static-checks"
+    image: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/terraform.yml/badge.svg"
+    url: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/terraform.yml"
 
 #  description of this project
 description: |-
@@ -38,7 +44,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.15.0"
+        version                   = "1.0.1"
         name                      = "alarm"
         environment               = "test"
         label_order               = ["name", "environment"]
@@ -65,7 +71,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.15.0"
+        version                   = "1.0.1"
         name                      = "alarm"
         environment               = "test"
         label_order               = ["name", "environment"]
@@ -103,7 +109,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "0.15.0"
+        version                   = "1.0.1"
         name                      = "alarm"
         environment               = "test"
         label_order               = ["name", "environment"]
