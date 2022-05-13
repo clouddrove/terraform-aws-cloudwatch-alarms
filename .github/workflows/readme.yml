@@ -35,10 +35,13 @@ jobs:
         continue-on-error: true
 
       - name: 'push readme'
-        uses: 'clouddrove/github-actions@v9.0.1'
         continue-on-error: true
-        with:
-          actions_subcommand: 'push'
+        run: |
+            cd /github/workspace/new-workflow
+            git config --global user.email "anmol+ci@clouddrove.com."
+            git config --global user.name "clouddrove-ci"
+            git add . && git commit -m "update README.md"
+            git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
 
