@@ -24,13 +24,13 @@ jobs:
           github_token: '${{ secrets.GITHUB}}'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+z
 
-
-      - name: pre-commit check errors
+      - name: pre-commit check errors'
         uses: pre-commit/action@v2.0.0
         continue-on-error: true
 
-      - name: pre-commit fix erros
+      - name: pre-commit fix erros'
         uses: pre-commit/action@v2.0.0
         continue-on-error: true
 
