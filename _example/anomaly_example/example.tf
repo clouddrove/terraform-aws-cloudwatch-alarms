@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "0.15.0"
+  version = "0.15.1"
 
   name        = "vpc"
   environment = "test"
@@ -15,7 +15,7 @@ module "vpc" {
 
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "0.15.0"
+  version = "0.15.3"
 
   name        = "public-subnet"
   environment = "test"
@@ -32,7 +32,7 @@ module "public_subnets" {
 
 module "http-https" {
   source  = "clouddrove/security-group/aws"
-  version = "0.15.0"
+  version = "1.0.1"
 
   name        = "alarm"
   environment = "test"
@@ -45,7 +45,7 @@ module "http-https" {
 
 module "ssh" {
   source  = "clouddrove/security-group/aws"
-  version = "0.15.0"
+  version = "1.0.1"
 
   name        = "alarmsg"
   environment = "test"
@@ -58,7 +58,7 @@ module "ssh" {
 
 module "ec2" {
   source  = "clouddrove/ec2/aws"
-  version = "0.15.0"
+  version = "1.0.1"
 
   name        = "alarm"
   environment = "test"
