@@ -4,7 +4,7 @@ provider "aws" {
 
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "0.15.1"
+  version = "1.3.0"
 
   name        = "vpc"
   environment = "test"
@@ -16,7 +16,7 @@ module "vpc" {
 
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "0.15.3"
+  version = "1.3.0"
 
   name        = "public-subnet"
   environment = "test"
@@ -33,7 +33,7 @@ module "public_subnets" {
 
 module "http-https" {
   source  = "clouddrove/security-group/aws"
-  version = "1.0.1"
+  version = "1.3.0"
 
 
   name        = "http-https"
@@ -47,7 +47,7 @@ module "http-https" {
 
 module "ssh" {
   source  = "clouddrove/security-group/aws"
-  version = "1.0.1"
+  version = "1.3.0"
 
 
   name        = "ssh"
@@ -61,7 +61,7 @@ module "ssh" {
 
 module "ec2" {
   source  = "clouddrove/ec2/aws"
-  version = "1.0.1"
+  version = "1.3.0"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]
@@ -74,7 +74,6 @@ module "ec2" {
   monitoring                  = true
   associate_public_ip_address = true
   tenancy                     = "default"
-  disk_size                   = 8
   vpc_security_group_ids_list = [module.ssh.security_group_ids, module.http-https.security_group_ids]
   subnet_ids                  = tolist(module.public_subnets.public_subnet_id)
 
