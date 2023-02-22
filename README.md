@@ -79,7 +79,7 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "1.0.1"
+      version                   = "1.3.0"
       name                      = "alarm"
       environment               = "test"
       label_order               = ["name", "environment"]
@@ -106,7 +106,7 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "1.0.1"
+      version                   = "1.3.0"
       name                      = "alarm"
       environment               = "test"
       label_order               = ["name", "environment"]
@@ -144,7 +144,7 @@ Here are some examples of how you can use this module in your inventory structur
 ```hcl
     module "alarm" {
       source                    = "clouddrove/cloudwatch-alarms/aws"
-      version                   = "1.0.1"
+      version                   = "1.3.0"
       name                      = "alarm"
       environment               = "test"
       label_order               = ["name", "environment"]
