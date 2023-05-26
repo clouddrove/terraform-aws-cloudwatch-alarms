@@ -8,15 +8,39 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    # Add assignees
+    assignees:
+      - "clouddrove-ci"
+    # Add reviewer
+    reviewers:
+      - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
     directory: "_example/anomaly_example" # Location of package manifests
     schedule:
       interval: "weekly"
+    # Add assignees
+    assignees:
+      - "clouddrove-ci"
+    # Add reviewer
+    reviewers:
+      - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
     directory: "_example/basic_example" # Location of package manifests
     schedule:
       interval: "weekly"
+    # Add assignees
+    assignees:
+      - "clouddrove-ci"
+    # Add reviewer
+    reviewers:
+      - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
     directory: "_example/expression_example" # Location of package manifests
     schedule:
       interval: "weekly"
+    # Add assignees
+    assignees:
+      - "clouddrove-ci"
+    # Add reviewer
+    reviewers:
+      - "approvers"
