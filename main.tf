@@ -1,11 +1,6 @@
-# Managed By : CloudDrove
-# Description : This Script is used to create Cloudwatch Alarms.
-# Copyright @ CloudDrove. All Right Reserved.
-
-#Module      : Label
-#Description : This terraform module is designed to generate consistent label names and tags
-#              for resources. You can use terraform-labels to implement a strict naming
-#              convention.
+##-----------------------------------------------------------------------------
+## Labels module callled that will be used for naming and tags.
+##-----------------------------------------------------------------------------
 module "labels" {
   source  = "clouddrove/labels/aws"
   version = "1.3.0"
@@ -18,8 +13,9 @@ module "labels" {
   enabled     = var.enabled
 }
 
-#Module      : CLOUDWATCH METRIC ALARM
-#Description : Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
+## creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
 resource "aws_cloudwatch_metric_alarm" "default" {
   count = var.enabled == true && var.expression_enabled == false && var.threshold_metric_id == "" ? 1 : 0
 
@@ -41,8 +37,9 @@ resource "aws_cloudwatch_metric_alarm" "default" {
   dimensions = var.dimensions
 }
 
-#Module      : CLOUDWATCH METRIC ALARM
-#Description : Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
+## creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
 resource "aws_cloudwatch_metric_alarm" "expression" {
   count = var.enabled == true && var.expression_enabled == true && var.threshold_metric_id == "" ? 1 : 0
 
@@ -85,8 +82,9 @@ resource "aws_cloudwatch_metric_alarm" "expression" {
 
 }
 
-#Module      : CLOUDWATCH METRIC ALARM
-#Description : Terraform module creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
+## creates Cloudwatch Alarm on AWS for monitoriing AWS services.
+##-----------------------------------------------------------------------------
 resource "aws_cloudwatch_metric_alarm" "anomaly" {
   count = var.enabled == true && var.expression_enabled == false && var.threshold_metric_id != "" ? 1 : 0
 

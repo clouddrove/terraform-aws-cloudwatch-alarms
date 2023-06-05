@@ -1,7 +1,13 @@
+##---------------------------------------------------------------------------------------------------------------------------
+## Provider block added, Use the Amazon Web Services (AWS) provider to interact with the many resources supported by AWS.
+##--------------------------------------------------------------------------------------------------------------------------
 provider "aws" {
   region = "eu-west-1"
 }
 
+##---------------------------------------------------------------------------------------------------------------------------
+## A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.
+##--------------------------------------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "clouddrove/vpc/aws"
   version = "1.3.1"
@@ -13,6 +19,9 @@ module "vpc" {
   cidr_block = "172.16.0.0/16"
 }
 
+##-----------------------------------------------------
+## A subnet is a range of IP addresses in your VPC.
+##-----------------------------------------------------
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
   version = "1.3.0"
@@ -30,6 +39,9 @@ module "public_subnets" {
   igw_id             = module.vpc.igw_id
 }
 
+##-----------------------------------------------------
+## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with http-https.
+##-----------------------------------------------------
 module "http-https" {
   source  = "clouddrove/security-group/aws"
   version = "1.3.0"
@@ -43,6 +55,9 @@ module "http-https" {
   allowed_ports = [80, 443]
 }
 
+##-----------------------------------------------------
+## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with ssh.
+##-----------------------------------------------------
 module "ssh" {
   source  = "clouddrove/security-group/aws"
   version = "1.3.0"
@@ -56,6 +71,9 @@ module "ssh" {
   allowed_ports = [22]
 }
 
+##-----------------------------------------------------
+## Amazon EC2 provides cloud hosted virtual machines, called "instances", to run applications.
+##-----------------------------------------------------
 module "ec2" {
   source  = "clouddrove/ec2/aws"
   version = "1.3.0"
@@ -83,6 +101,9 @@ module "ec2" {
   user_data          = "./_bin/user_data.sh"
 }
 
+##-----------------------------------------------------------------------------
+## alarm module call.
+##-----------------------------------------------------------------------------
 module "alarm" {
   source = "../../"
 
