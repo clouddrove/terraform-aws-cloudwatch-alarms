@@ -9,9 +9,8 @@ provider "aws" {
 ## A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.
 ##--------------------------------------------------------------------------------------------------------------------------
 module "vpc" {
-  source  = "clouddrove/vpc/aws"
-  version = "1.3.1"
-
+  source      = "clouddrove/vpc/aws"
+  version     = "1.3.1"
   name        = "vpc"
   environment = "test"
   label_order = ["name", "environment"]
@@ -23,13 +22,11 @@ module "vpc" {
 ## A subnet is a range of IP addresses in your VPC.
 ##-----------------------------------------------------
 module "public_subnets" {
-  source  = "clouddrove/subnet/aws"
-  version = "1.3.0"
-
+  source      = "clouddrove/subnet/aws"
+  version     = "1.3.0"
   name        = "public-subnet"
   environment = "test"
   label_order = ["name", "environment"]
-
 
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
@@ -43,10 +40,8 @@ module "public_subnets" {
 ## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with http-https.
 ##-----------------------------------------------------
 module "http-https" {
-  source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
-
-
+  source      = "clouddrove/security-group/aws"
+  version     = "2.0.0"
   name        = "http-https"
   environment = "test"
   label_order = ["name", "environment"]
@@ -60,10 +55,8 @@ module "http-https" {
 ## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with ssh.
 ##-----------------------------------------------------
 module "ssh" {
-  source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
-
-
+  source      = "clouddrove/security-group/aws"
+  version     = "2.0.0"
   name        = "ssh"
   environment = "test"
   label_order = ["name", "environment"]
@@ -77,9 +70,8 @@ module "ssh" {
 ## Amazon EC2 provides cloud hosted virtual machines, called "instances", to run applications.
 ##-----------------------------------------------------
 module "ec2" {
-  source  = "clouddrove/ec2/aws"
-  version = "1.3.0"
-
+  source      = "clouddrove/ec2/aws"
+  version     = "1.3.0"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]
@@ -95,7 +87,6 @@ module "ec2" {
   subnet_ids                  = tolist(module.public_subnets.public_subnet_id)
 
   assign_eip_address = "true"
-
   ebs_volume_enabled = "true"
   ebs_volume_type    = "gp2"
   ebs_volume_size    = 30
@@ -106,12 +97,10 @@ module "ec2" {
 ## alarm module call.
 ##-----------------------------------------------------------------------------
 module "alarm" {
-  source = "../../"
-
+  source      = "../../"
   name        = "alarm"
   environment = "test"
   label_order = ["name", "environment"]
-
 
   expression_enabled  = true
   alarm_name          = "cpu-alarm"
