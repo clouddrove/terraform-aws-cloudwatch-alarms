@@ -10,7 +10,7 @@ provider "aws" {
 ##--------------------------------------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "1.3.1"
+  version = "2.0.0"
 
   name        = "vpc"
   environment = "test"
@@ -45,7 +45,7 @@ module "public_subnets" {
 ##-----------------------------------------------------
 module "http-https" {
   source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
+  version = "2.0.0"
 
 
   name        = "http-https"
@@ -62,7 +62,7 @@ module "http-https" {
 ##-----------------------------------------------------
 module "ssh" {
   source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
+  version = "2.0.0"
 
 
   name        = "ssh"
@@ -78,8 +78,8 @@ module "ssh" {
 ## Amazon EC2 provides cloud hosted virtual machines, called "instances", to run applications.
 ##-----------------------------------------------------
 module "ec2" {
-  source  = "clouddrove/ec2/aws"
-  version = "1.3.0"
+  source      = "clouddrove/ec2/aws"
+  version     = "1.3.0"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]

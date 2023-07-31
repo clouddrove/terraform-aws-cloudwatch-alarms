@@ -10,7 +10,7 @@ provider "aws" {
 ##--------------------------------------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "1.3.1"
+  version = "2.0.0"
 
   name        = "vpc"
   environment = "test"
@@ -44,7 +44,7 @@ module "public_subnets" {
 ##-----------------------------------------------------
 module "http-https" {
   source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
+  version = "2.0.0"
 
   name        = "alarm"
   environment = "test"
@@ -60,7 +60,7 @@ module "http-https" {
 ##-----------------------------------------------------
 module "ssh" {
   source  = "clouddrove/security-group/aws"
-  version = "1.3.0"
+  version = "2.0.0"
 
   name        = "alarmsg"
   environment = "test"
