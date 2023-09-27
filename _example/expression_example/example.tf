@@ -15,8 +15,7 @@ module "vpc" {
   name        = "vpc"
   environment = "test"
   label_order = ["name", "environment"]
-
-  cidr_block = "172.16.0.0/16"
+  cidr_block  = "172.16.0.0/16"
 }
 
 ##-----------------------------------------------------
@@ -29,7 +28,6 @@ module "public_subnets" {
   name        = "public-subnet"
   environment = "test"
   label_order = ["name", "environment"]
-
 
   availability_zones = ["eu-west-1b", "eu-west-1c"]
   vpc_id             = module.vpc.vpc_id
@@ -46,12 +44,10 @@ module "http-https" {
   source  = "clouddrove/security-group/aws"
   version = "2.0.0"
 
-
   name        = "http-https"
   environment = "test"
   label_order = ["name", "environment"]
-
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
 }
 
 ##-----------------------------------------------------
@@ -61,14 +57,10 @@ module "ssh" {
   source  = "clouddrove/security-group/aws"
   version = "2.0.0"
 
-
   name        = "ssh"
   environment = "test"
   label_order = ["name", "environment"]
-
-  vpc_id        = module.vpc.vpc_id
-  allowed_ip    = [module.vpc.vpc_cidr_block]
-  allowed_ports = [22]
+  vpc_id      = module.vpc.vpc_id
 }
 
 ##-----------------------------------------------------
@@ -90,13 +82,11 @@ module "ec2" {
   associate_public_ip_address = true
   tenancy                     = "default"
   subnet_ids                  = tolist(module.public_subnets.public_subnet_id)
-
-  assign_eip_address = "true"
-
-  ebs_volume_enabled = "true"
-  ebs_volume_type    = "gp2"
-  ebs_volume_size    = 30
-  user_data          = "./_bin/user_data.sh"
+  assign_eip_address          = "true"
+  ebs_volume_enabled          = "true"
+  ebs_volume_type             = "gp2"
+  ebs_volume_size             = 30
+  user_data                   = "./_bin/user_data.sh"
 }
 
 ##-----------------------------------------------------------------------------
@@ -108,7 +98,6 @@ module "alarm" {
   name        = "alarm"
   environment = "test"
   label_order = ["name", "environment"]
-
 
   expression_enabled  = true
   alarm_name          = "cpu-alarm"
@@ -145,9 +134,8 @@ module "alarm" {
         LoadBalancer = "app/web"
       }
   }]
-  alarm_description = "This metric monitors ec2 cpu utilization"
-  alarm_actions     = []
-
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  alarm_actions             = []
   actions_enabled           = true
   insufficient_data_actions = []
   ok_actions                = []
