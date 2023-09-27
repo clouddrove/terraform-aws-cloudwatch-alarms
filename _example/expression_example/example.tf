@@ -38,32 +38,6 @@ module "public_subnets" {
 }
 
 ##-----------------------------------------------------
-## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with http-https.
-##-----------------------------------------------------
-module "http-https" {
-  source  = "clouddrove/security-group/aws"
-  version = "2.0.0"
-
-  name        = "http-https"
-  environment = "test"
-  label_order = ["name", "environment"]
-  vpc_id      = module.vpc.vpc_id
-}
-
-##-----------------------------------------------------
-## An AWS security group acts as a virtual firewall for incoming and outgoing traffic with ssh.
-##-----------------------------------------------------
-module "ssh" {
-  source  = "clouddrove/security-group/aws"
-  version = "2.0.0"
-
-  name        = "ssh"
-  environment = "test"
-  label_order = ["name", "environment"]
-  vpc_id      = module.vpc.vpc_id
-}
-
-##-----------------------------------------------------
 ## Amazon EC2 provides cloud hosted virtual machines, called "instances", to run applications.
 ##-----------------------------------------------------
 module "ec2" {
@@ -73,6 +47,13 @@ module "ec2" {
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]
+
+  ####----------------------------------------------------------------------------------
+  ## Below A security group controls the traffic that is allowed to reach and leave the resources that it is associated with.
+  ####----------------------------------------------------------------------------------
+  vpc_id        = module.vpc.vpc_id
+  allowed_ip    = [module.vpc.vpc_cidr_block]
+  allowed_ports = [22, 80, 443]
 
   instance_count              = 1
   ami                         = "ami-08d658f84a6d84a80"

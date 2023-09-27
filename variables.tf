@@ -166,3 +166,76 @@ variable "query_metrics" {
   }]
   description = "values for metric query metrics."
 }
+
+variable "enable_security_group" {
+  type        = bool
+  default     = true
+  description = "Enable default Security Group with only Egress traffic allowed."
+}
+
+variable "sg_ids" {
+  type        = list(any)
+  default     = []
+  description = "of the security group id."
+}
+
+variable "vpc_id" {
+  type        = string
+  default     = ""
+  description = "The ID of the VPC that the instance security group belongs to."
+  sensitive   = true
+}
+
+variable "sg_description" {
+  type        = string
+  default     = "Instance default security group (only egress access is allowed)."
+  description = "The security group description."
+}
+
+variable "is_external" {
+  type        = bool
+  default     = false
+  description = "enable to udated existing security Group"
+}
+
+variable "egress_rule" {
+  type        = bool
+  default     = true
+  description = "Enable to create egress rule"
+}
+
+variable "sg_egress_description" {
+  type        = string
+  default     = "Description of the rule."
+  description = "Description of the egress and ingress rule"
+}
+
+variable "sg_egress_ipv6_description" {
+  type        = string
+  default     = "Description of the rule."
+  description = "Description of the egress_ipv6 rule"
+}
+
+variable "allowed_ip" {
+  type        = list(any)
+  default     = []
+  description = "List of allowed ip."
+}
+
+variable "allowed_ports" {
+  type        = list(any)
+  default     = []
+  description = "List of allowed ingress ports"
+}
+
+variable "sg_ingress_description" {
+  type        = string
+  default     = "Description of the ingress rule use elasticache."
+  description = "Description of the ingress rule"
+}
+
+variable "protocol" {
+  type        = string
+  default     = "tcp"
+  description = "The protocol. If not icmp, tcp, udp, or all use the."
+}
