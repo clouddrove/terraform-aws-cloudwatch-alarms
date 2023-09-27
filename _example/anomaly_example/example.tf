@@ -1,5 +1,5 @@
 ##---------------------------------------------------------------------------------------------------------------------------
-## Provider block added, Use the Amazon Web Services (AWS) provider to interact with the many resources supported by AWS.
+## Provider block added, Use6 the Amazon Web Services (AWS) provider to interact with the many resources supported by AWS.
 ##--------------------------------------------------------------------------------------------------------------------------
 provider "aws" {
   region = "eu-west-1"
