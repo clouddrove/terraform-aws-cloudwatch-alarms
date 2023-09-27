@@ -25,7 +25,7 @@ module "vpc" {
 ##-----------------------------------------------------
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "1.3.0"
+  version = "2.0.0"
 
   name        = "public-subnet"
   environment = "test"
@@ -79,7 +79,7 @@ module "ssh" {
 ##-----------------------------------------------------
 module "ec2" {
   source      = "clouddrove/ec2/aws"
-  version     = "1.3.0"
+  version     = "2.0.0"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]

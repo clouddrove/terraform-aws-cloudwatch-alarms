@@ -44,7 +44,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "1.3.0"
+        version                   = "2.0.0"
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]
@@ -75,7 +75,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "1.3.0"
+        version                   = "2.0.0"
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]
@@ -115,7 +115,7 @@ usage: |-
   ```hcl
       module "alarm" {
         source                    = "clouddrove/cloudwatch-alarms/aws"
-        version                   = "1.3.0"
+        version                   = "2.0.0"
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]

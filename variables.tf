@@ -133,19 +133,14 @@ variable "ok_actions" {
   description = "The list of actions to execute when this alarm transitions into an OK state from any other state."
 }
 
-variable "instance_id" {
-  type        = string
-  default     = ""
-  description = "The instance ID."
-  sensitive   = true
-}
-
 variable "dimensions" {
+  type        = map(any)
   default     = {}
   description = "Dimensions for metrics."
 }
 
 variable "query_expressions" {
+  type = list(any)
   default = [{
     id          = "e1"
     expression  = "ANOMALY_DETECTION_BAND(m1)"
@@ -156,6 +151,7 @@ variable "query_expressions" {
 }
 
 variable "query_metrics" {
+  type = list(any)
   default = [{
     id          = "m1"
     return_data = "true"
