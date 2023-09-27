@@ -92,7 +92,6 @@ module "ec2" {
   monitoring                  = true
   associate_public_ip_address = true
   tenancy                     = "default"
-  vpc_security_group_ids_list = [module.ssh.security_group_ids, module.http-https.security_group_ids]
   subnet_ids                  = tolist(module.public_subnets.public_subnet_id)
 
   assign_eip_address = "true"
