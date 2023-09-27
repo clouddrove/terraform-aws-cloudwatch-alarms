@@ -50,7 +50,7 @@ module "http-https" {
   environment = "test"
   label_order = ["name", "environment"]
 
-  vpc_id        = module.vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
 }
 
 ##-----------------------------------------------------
