@@ -52,8 +52,6 @@ module "http-https" {
   label_order = ["name", "environment"]
 
   vpc_id        = module.vpc.vpc_id
-  allowed_ip    = ["0.0.0.0/0"]
-  allowed_ports = [80, 443]
 }
 
 ##-----------------------------------------------------
