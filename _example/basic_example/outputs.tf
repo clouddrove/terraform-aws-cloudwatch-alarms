@@ -1,5 +1,5 @@
 output "arn" {
-  value       = module.alarm.*.arn
+  value       = module.alarm[*].arn
   description = "The ARN of the cloudwatch metric alarm."
 }
 
