@@ -15,18 +15,15 @@ github_repo: clouddrove/terraform-aws-cloudwatch-alarms
 
 # Badges to display
 badges:
-  - name: "Terraform"
-    image: "https://img.shields.io/badge/Terraform-v1.1.7-green"
-    url: "https://www.terraform.io"
-  - name: "Licence"
-    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
-    url: "LICENSE.md"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/clouddrove/terraform-aws-cloudwatch-alarms.svg"
+    url: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/releases/latest"
   - name: "tfsec"
     image: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/tfsec.yml/badge.svg"
     url: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/tfsec.yml"
-  - name: "static-checks"
-    image: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/terraform.yml/badge.svg"
-    url: "https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/actions/workflows/terraform.yml"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "LICENSE.md"
 
 #  description of this project
 description: |-
