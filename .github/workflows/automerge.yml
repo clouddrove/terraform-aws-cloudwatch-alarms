@@ -7,30 +7,35 @@ permissions:
   pull-requests: write
 
 jobs:
+  static-checks:
+    name: Auto Approve a PR by dependabot 
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'dependencies'
+    strategy:
+      matrix:
+        tf-checks: ["tf-lint", "tfsec", "tf-checks"]    
+    steps:
+      - name: Wait for "${{ matrix.tf-checks }}" to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          check-name: ${{ matrix.tf-checks }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
   autoapprove:
     name: Auto Approve a PR by dependabot
+    needs: static-checks
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
     steps:
-      - name: wait for other checks to complete
-        run: |
-          sleep 150
-
-      - name: Get Status of current PR
-        id: get-status
-        uses: danieldeichfuss/get-status@v0.0.10
-        with:
-          ref: ${{ github.sha }}
-
-      - name: Approve a PR for Github Bot
-        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
+      - name: Approve a PR for Github Bot     
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Approve a PR for Anmol nagpal
-        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
+      - name: Approve a PR for Anmol nagpal      
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
