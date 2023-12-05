@@ -1,7 +1,7 @@
 name: Auto approve and merge PRs by dependabot
 on:
   pull_request:
-    types: [opened,synchronize]
+
 permissions:
   contents: write
   pull-requests: write
@@ -16,9 +16,9 @@ jobs:
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          check-name: 'tflint'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          wait-interval: 10
+          check-name: 'tf-lint'
+          repo-token: ${{ secrets.GITHUB }}
+          wait-interval: 30
 
   autoapprove:
     name: Auto Approve a PR by dependabot
@@ -26,13 +26,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
     steps:
-      - name: Approve a PR for Github Bot     
+      - name: Approve a PR for Github Bot
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Approve a PR for Anmol nagpal      
+      - name: Approve a PR for Anmol nagpal
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
