@@ -10,20 +10,14 @@ jobs:
   static-checks:
     name: Check the status of static checks 
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
-    strategy:
-      matrix:
-        tf-checks: ["tflint"]    
+    if: github.actor == 'dependabot[bot]'   
     steps:
-      - name: 'Checkout'
-        id: checkout
-        uses: actions/checkout@v2.3.4 
-      - name: Wait for "${{ matrix.tf-checks }}" to succeed
+      - name: Wait for "tflint" to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: ${{ github.ref }}
-          check-name: ${{ matrix.tf-checks }}
-          repo-token: ${{ secrets.GITHUB }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          check-name: 'tf-lint'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
 
   autoapprove:
