@@ -10,7 +10,7 @@ jobs:
   static-checks:
     name: Auto Approve a PR by dependabot 
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' && github.event.action == 'labeled' && github.event.label.name == 'dependencies'
+    if: github.actor == 'dependabot[bot]'
     strategy:
       matrix:
         tf-checks: ["tf-lint", "tfsec", "tf-checks"]    
