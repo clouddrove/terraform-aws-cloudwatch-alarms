@@ -21,7 +21,7 @@ jobs:
       - name: Wait for "${{ matrix.tf-checks }}" to succeed
         uses: lewagon/wait-on-check-action@v1.0.0
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: master
           check-name: ${{ matrix.tf-checks }}
           repo-token: ${{ secrets.GITHUB }}
           wait-interval: 10
