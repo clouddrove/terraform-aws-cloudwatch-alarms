@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   autoapprove:
-    name: Auto Approve a PR by dependabot 
+    name: Auto Approve a PR by dependabot
     runs-on: ubuntu-latest
     if: github.actor == 'dependabot[bot]'
     steps:
@@ -22,19 +22,15 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
-      - uses: dominikh/staticcheck-action@v1.3.0
-        with:
-          version: "2022.1.3"
-
       - name: Approve a PR for Github Bot
-        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}      
+        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Approve a PR for Anmol nagpal
-        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}      
+        if: ${{steps.get-status.outputs.all-checks-completed == 'true' &&  steps.get-status.outputs.all-checks-passed == 'true'}}
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
