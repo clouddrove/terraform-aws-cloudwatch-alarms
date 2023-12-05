@@ -42,7 +42,7 @@ module "public_subnets" {
 ##-----------------------------------------------------
 module "ec2" {
   source  = "clouddrove/ec2/aws"
-  version = "2.0.0"
+  version = "2.0.1"
 
   name        = "alarm"
   environment = "test"
