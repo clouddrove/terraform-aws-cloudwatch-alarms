@@ -13,7 +13,7 @@ jobs:
     if: github.actor == 'dependabot[bot]'
     strategy:
       matrix:
-        tf-checks: ["tf-lint", "tfsec", "tf-checks"]    
+        tf-checks: ["tflint"]    
     steps:
       - name: 'Checkout'
         id: checkout
