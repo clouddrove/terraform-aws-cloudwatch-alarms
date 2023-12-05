@@ -1,7 +1,7 @@
 name: Auto approve and merge PRs by dependabot
 on:
   pull_request:
-    types: [opened,synchronize,reopened]
+    types: [opened,synchronize]
 permissions:
   contents: write
   pull-requests: write
