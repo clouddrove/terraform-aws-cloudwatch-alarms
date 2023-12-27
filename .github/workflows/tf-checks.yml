@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 jobs:
   tf-checks-anomaly-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.5
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
       working_directory: './_example/anomaly_example/'
   tf-checks-basic-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.5
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
       working_directory: './_example/basic_example/'
   tf-checks-expression-example:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.5
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.0.9
     with:
       working_directory: './_example/expression_example/'
