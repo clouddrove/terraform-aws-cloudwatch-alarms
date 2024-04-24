@@ -24,7 +24,7 @@ badges:
   - name: "Licence"
     image: "https://img.shields.io/badge/License-APACHE-blue.svg"
     url: "LICENSE.md"
- - name: "Changelog"
+  - name: "Changelog"
     image: "https://img.shields.io/badge/Changelog-blue"
     url: "CHANGELOG.md"
 
