@@ -8,12 +8,12 @@ jobs:
   tf-checks-anomaly-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.1
     with:
-      working_directory: './_example/anomaly_example/'
+      working_directory: './examples/anomaly_example/'
   tf-checks-basic-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.1
     with:
-      working_directory: './_example/basic_example/'
+      working_directory: './examples/basic_example/'
   tf-checks-expression-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@1.2.1
     with:
-      working_directory: './_example/expression_example/'
+      working_directory: './examples/expression_example/'

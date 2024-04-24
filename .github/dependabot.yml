@@ -15,7 +15,7 @@ updates:
     reviewers:
       - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "_example/anomaly_example" # Location of package manifests
+    directory: "examples/anomaly_example" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
@@ -25,7 +25,7 @@ updates:
     reviewers:
       - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "_example/basic_example" # Location of package manifests
+    directory: "examples/basic_example" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
@@ -35,7 +35,7 @@ updates:
     reviewers:
       - "approvers"
   - package-ecosystem: "terraform" # See documentation for possible values
-    directory: "_example/expression_example" # Location of package manifests
+    directory: "examples/expression_example" # Location of package manifests
     schedule:
       interval: "weekly"
     # Add assignees
