@@ -75,6 +75,7 @@ usage: |-
         actions_enabled           = true
         insufficient_data_actions = []
         ok_actions                = []
+        treat_missing_data        = "ignore"
         dimensions = {
           instance_id = module.ec2.instance_id[0]
         }
