@@ -127,6 +127,12 @@ variable "insufficient_data_actions" {
   description = "The list of actions to execute when this alarm transitions into an INSUFFICIENT_DATA state from any other state."
 }
 
+variable "treat_missing_data" {
+  type        = string
+  default     = "missing"
+  description = "Sets how an alarm is going to handle missing data points."
+}
+
 variable "ok_actions" {
   type        = list(any)
   default     = []
