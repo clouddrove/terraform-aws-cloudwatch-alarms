@@ -26,6 +26,7 @@
 | statistic | The statistic to apply to the alarm's associated metric. | `string` | `"Average"` | no |
 | threshold | The value against which the specified statistic is compared. | `number` | `40` | no |
 | threshold\_metric\_id | If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY\_DETECTION\_BAND function. | `string` | `""` | no |
+| treat\_missing\_data | Sets how an alarm is going to handle missing data points. | `string` | `"missing"` | no |
 
 ## Outputs
 
