@@ -133,6 +133,12 @@ variable "treat_missing_data" {
   description = "Sets how an alarm is going to handle missing data points."
 }
 
+variable "datapoints_to_alarm" {
+  type        = number
+  default     = 1
+  description = "Sets the number of datapoints that must be breaching to trigger the alarm."
+}
+
 variable "ok_actions" {
   type        = list(any)
   default     = []

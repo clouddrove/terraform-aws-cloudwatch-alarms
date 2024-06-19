@@ -33,6 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "default" {
   insufficient_data_actions = var.insufficient_data_actions
   ok_actions                = var.ok_actions
   treat_missing_data        = var.treat_missing_data
+  datapoints_to_alarm       = var.datapoints_to_alarm
   tags                      = module.labels.tags
 
   dimensions = var.dimensions
@@ -54,6 +55,7 @@ resource "aws_cloudwatch_metric_alarm" "expression" {
   insufficient_data_actions = var.insufficient_data_actions
   ok_actions                = var.ok_actions
   treat_missing_data        = var.treat_missing_data
+  datapoints_to_alarm       = var.datapoints_to_alarm
   tags                      = module.labels.tags
   dynamic "metric_query" {
     for_each = var.query_expressions
@@ -100,6 +102,7 @@ resource "aws_cloudwatch_metric_alarm" "anomaly" {
   insufficient_data_actions = var.insufficient_data_actions
   ok_actions                = var.ok_actions
   treat_missing_data        = var.treat_missing_data
+  datapoints_to_alarm       = var.datapoints_to_alarm
   tags                      = module.labels.tags
   dynamic "metric_query" {
     for_each = var.query_expressions
