@@ -7,6 +7,7 @@
 | alarm\_description | The description for the alarm. | `string` | `""` | no |
 | alarm\_name | The descriptive name for the alarm. | `string` | n/a | yes |
 | comparison\_operator | The arithmetic operation to use when comparing the specified Statistic and Threshold. | `string` | n/a | yes |
+| datapoints\_to\_alarm | Sets the number of datapoints that must be breaching to trigger the alarm. | `number` | `1` | no |
 | dimensions | Dimensions for metrics. | `map(any)` | `{}` | no |
 | enabled | Enable alarm. | `bool` | `true` | no |
 | environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
