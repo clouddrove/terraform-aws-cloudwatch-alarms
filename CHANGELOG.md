@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.2] - 2024-07-02
+### :memo: Documentation Changes
+- [`5a43078`](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/commit/5a430780cf15d4889f7b86872b9b8985fe9819b8) - update CHANGELOG.md for 1.3.1 *(commit by [@clouddrove-ci](https://github.com/clouddrove-ci))*
+
+
 ## [1.3.1] - 2024-06-10
 ### :sparkles: New Features
 - [`4c80040`](https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/commit/4c80040e447232f317eb49ab22b15f9641ef3fbd) - add changelog.yml file and use shared-workflows *(commit by [@theprashantyadav](https://github.com/theprashantyadav))*
@@ -127,3 +132,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.0.1]: https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/compare/1.0.1...master
 [1.3.0]:  https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/releases/tag/1.3.0
 [1.3.1]: https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/compare/1.3.0...1.3.1
+[1.3.2]: https://github.com/clouddrove/terraform-aws-cloudwatch-alarms/compare/1.3.1...1.3.2
