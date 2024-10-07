@@ -59,8 +59,8 @@ usage: |-
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]
-      
-      
+
+
         alarm_name          = "cpu-alarm"
         comparison_operator = "GreaterThanOrEqualToThreshold"
         evaluation_periods  = 2
@@ -71,7 +71,7 @@ usage: |-
         threshold           = 40
         alarm_description   = "This metric monitors ec2 cpu utilization"
         alarm_actions       = []
-      
+
         actions_enabled           = true
         insufficient_data_actions = []
         ok_actions                = []
@@ -92,7 +92,7 @@ usage: |-
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]
-      
+
         alarm_name          = "cpu-alarm"
         comparison_operator = "GreaterThanUpperThreshold"
         evaluation_periods  = 2
@@ -117,7 +117,7 @@ usage: |-
         }]
         alarm_description = "This metric monitors ec2 cpu utilization"
         alarm_actions     = []
-      
+
         actions_enabled           = true
         insufficient_data_actions = []
         ok_actions                = []
@@ -132,7 +132,7 @@ usage: |-
         name        = "alarm"
         environment = "test"
         label_order = ["name", "environment"]
-            
+
         expression_enabled  = true
         alarm_name          = "cpu-alarm"
         comparison_operator = "GreaterThanOrEqualToThreshold"
@@ -170,7 +170,7 @@ usage: |-
         }]
         alarm_description = "This metric monitors ec2 cpu utilization"
         alarm_actions     = []
-      
+
         actions_enabled           = true
         insufficient_data_actions = []
         ok_actions                = []
