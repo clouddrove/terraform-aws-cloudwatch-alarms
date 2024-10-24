@@ -19,7 +19,7 @@ module "labels" {
 resource "aws_cloudwatch_metric_alarm" "default" {
   count = var.enabled == true && var.expression_enabled == false && var.threshold_metric_id == "" ? 1 : 0
 
-  alarm_name                = var.alarm_name
+  alarm_name                = module.labels.id
   alarm_description         = var.alarm_description
   comparison_operator       = var.comparison_operator
   evaluation_periods        = var.evaluation_periods
