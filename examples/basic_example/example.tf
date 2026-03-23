@@ -54,19 +54,26 @@ module "ec2" {
   allowed_ip    = [module.vpc.vpc_cidr_block]
   allowed_ports = [22, 80, 443]
 
-  instance_count              = 1
-  ami                         = "ami-08d658f84a6d84a80"
-  ebs_optimized               = "false"
-  instance_type               = "t2.nano"
-  monitoring                  = true
-  associate_public_ip_address = true
-  tenancy                     = "default"
-  subnet_ids                  = tolist(module.public_subnets.public_subnet_id)
-  assign_eip_address          = "true"
-  ebs_volume_enabled          = "true"
-  ebs_volume_type             = "gp2"
-  ebs_volume_size             = 30
-  user_data                   = "./_bin/user_data.sh"
+  instance_count = 1
+  instance_configuration = {
+    ami = {
+      type         = "ubuntu"
+      version      = "24"
+      architecture = "x86_64"
+      region       = "eu-west-1"
+    }
+    ebs_optimized               = false
+    instance_type               = "t2.nano"
+    monitoring                  = true
+    associate_public_ip_address = true
+    tenancy                     = "default"
+    user_data                   = "./_bin/user_data.sh"
+  }
+  subnet_ids         = tolist(module.public_subnets.public_subnet_id)
+  assign_eip_address = true
+  ebs_volume_enabled = true
+  ebs_volume_type    = "gp2"
+  ebs_volume_size    = 30
 }
 
 ##-----------------------------------------------------------------------------
