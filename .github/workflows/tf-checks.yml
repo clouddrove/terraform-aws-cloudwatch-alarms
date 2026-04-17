@@ -1,22 +1,37 @@
 name: tf-checks
 on:
-  push:
-    branches: [ master ]
   pull_request:
-  workflow_dispatch:
+    paths:
+      - '**/*.tf'
+      - '*.tf'
 jobs:
   tf-checks-anomaly-example:
+    if: github.actor != 'dependabot[bot]'
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@master
     with:
       working_directory: './examples/anomaly_example/'
-      provider: none
+      provider: aws
+      enable_plan: true
+      show_plan: false
+    secrets:
+      BUILD_ROLE: ${{ secrets.BUILD_ROLE }}
   tf-checks-basic-example:
+    if: github.actor != 'dependabot[bot]'
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@master
     with:
       working_directory: './examples/basic_example/'
-      provider: none
+      provider: aws
+      enable_plan: true
+      show_plan: false
+    secrets:
+      BUILD_ROLE: ${{ secrets.BUILD_ROLE }}
   tf-checks-expression-example:
+    if: github.actor != 'dependabot[bot]'
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@master
     with:
       working_directory: './examples/expression_example/'
-      provider: none
+      provider: aws
+      enable_plan: true
+      show_plan: false
+    secrets:
+      BUILD_ROLE: ${{ secrets.BUILD_ROLE }}
