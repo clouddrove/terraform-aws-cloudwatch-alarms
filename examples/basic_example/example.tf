@@ -42,7 +42,7 @@ module "public_subnets" {
 ##-----------------------------------------------------
 module "ec2" {
   source      = "clouddrove/ec2/aws"
-  version     = "2.0.5"
+  version     = "2.1.1"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]
