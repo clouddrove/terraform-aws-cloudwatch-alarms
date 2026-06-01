@@ -23,7 +23,7 @@ module "vpc" {
 ##-----------------------------------------------------
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "2.0.2"
+  version = "2.0.3"
 
   name        = "public-subnet"
   environment = "test"
