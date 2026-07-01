@@ -1,12 +1,15 @@
+---
 name: tf-checks
+
 permissions:
   id-token: write
   contents: read
+
 on:
-  push:
-    branches: [ master ]
   pull_request:
-  workflow_dispatch:
+    paths:
+      - '**/*.tf'
+      - '*.tf'
 jobs:
   tf-checks-anomaly-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@master
@@ -23,3 +26,4 @@ jobs:
     with:
       working_directory: './examples/expression_example/'
       provider: none
+...
