@@ -10,7 +10,7 @@ provider "aws" {
 ##--------------------------------------------------------------------------------------------------------------------------
 module "vpc" {
   source  = "clouddrove/vpc/aws"
-  version = "2.0.3"
+  version = "2.0.5"
 
   name        = "vpc"
   environment = "test"
@@ -23,7 +23,7 @@ module "vpc" {
 ##-----------------------------------------------------
 module "public_subnets" {
   source  = "clouddrove/subnet/aws"
-  version = "2.0.2"
+  version = "2.0.3"
 
   name        = "public-subnet"
   environment = "test"
@@ -42,7 +42,7 @@ module "public_subnets" {
 ##-----------------------------------------------------
 module "ec2" {
   source      = "clouddrove/ec2/aws"
-  version     = "2.0.5"
+  version     = "2.1.1"
   name        = "ec2-instance"
   environment = "test"
   label_order = ["name", "environment"]
